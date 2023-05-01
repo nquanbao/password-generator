@@ -50,42 +50,65 @@ generateBtn.onclick = function (){
   }*/
 }
 let uperCaseString = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-let lowercaseString = uperCaseString.toLowercase();
+let lowercaseString = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 let number = [1,2,3,4,5,6,7,8,9,0];
 let specialString = ["!",'"','#','$','%','&','(',')','*','+',',','-','.','/',':',';','<','=','>','?','@','[',"]","\","^",","_",'`','{','|','}','~',"'"];
 let generatePassword;
 
 if((lowerCase) && (upperCase = false) && (numericChar = false) && (specialChar = false)){
   lowecaseLength = lengthCheck;
-  return lowecaseLength;
 } else if ((lowerCase) && (upperCase) && (numericChar = false) && (specialChar = false)) {
   uppercaseLength = 2;
   lowecaseLength = lengthCheck - uppercaseLength;
-  return uppercaseLength, lowecaseLength;
 } else if ((lowerCase) && (upperCase = false) && (numericChar) && (specialChar = false)) {
   numericLength = 2;
   lowecaseLength = lengthCheck - numericLength;
-  return numericLength, lowecaseLength;
 } else if ((lowerCase) && (upperCase = false) && (numericChar = false) && (specialChar)) {
   specialLength = 2;
   lowecaseLength = lengthCheck - specialLength;
-  return specialLength, lowecaseLength;
 } else if ((lowerCase) && (upperCase) && (numericChar) && (specialChar = false)) {
   uppercaseLength = 2;
   numericLength = 2;
   lowecaseLength = lengthCheck - (uppercaseLength + numericLength);
-  return uppercaseLength, numericLength, lowecaseLength;
 } else if ((lowerCase) && (upperCase) && (numericChar = false) && (specialChar)) {
   uppercaseLength = 2;
   specialLength = 2;
   lowecaseLength = lengthCheck - (uppercaseLength + specialLength);
-  return uppercaseLength, specialLength, lowecaseLength;
 } else if ((lowerCase) && ( upperCase = false) && (numericChar) && (specialChar)) {
   numericLength = 2;
   specialLength = 2;
   lowecaseLength = lengthCheck - (numericLength + specialLength);
-  return numericLength, specialLength, lowecaseLength;
+} else if ((lowerCase = false) && (upperCase) && (numericChar = false) && (specialChar = false)) {
+  uppercaseLength = lengthCheck;
+} else if ((lowerCase = false) && (upperCase) && (numericChar) && (specialChar = false)) {
+  numericLength = 2;
+  uppercaseLength = lengthCheck - numericLength;
+} else if ((lowerCase = false) && (upperCase) && (numericChar = false) && (specialChar)) {
+  specialLength = 2;
+  uppercaseLength = lengthCheck - specialLength;
+} else if ((lowerCase = false) && (upperCase = false) && (numericChar) && (specialChar = false)) {
+  numericLength = lengthCheck;
+} else if ((lowerCase = false) && (upperCase = false) && (numericChar) && (specialChar)) {
+  specialLength = 2;
+  numericLength = lengthCheck - specialLength;
+} else {
+  specialLength = lengthCheck;
 }
+
+let lower = Math.floor(Math.random() * lowercaseString.lowecaseLength);
+let passwordlower = lowercaseString[lower];
+
+let uper = Math.floor(Math.random() * uperCaseString.uppercaseLength);
+let passwordupper = uperCaseString[uper];
+
+let numberic = Math.floor(Math.random() * number.numericLength);
+let passwordnum = number[numberic]; 
+
+let special = Math.floor(Math.random() * specialString.specialLength);
+let passwordspecial = specialString[special];
+
+
+generatePassword = [passwordlower, passwordupper,passwordnum,passwordspecial];
 
 // Write password to the #password input
 function writePassword() {
