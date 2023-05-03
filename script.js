@@ -9,10 +9,10 @@ var lowerCase = true;
 var upperCase = true;
 var numericChar = true;
 var specialChar = true;
-var passwordlower;
-var passwordupper = ["dasdas"];
-var passwordnum = ["121232"];
-var passwordspecial = ["!@#$"];
+var passwordlower = [''];
+var passwordupper = [''];
+var passwordnum = [''];
+var passwordspecial = [''];
 var generatePassword;
 
 /*var uperCaseString = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
@@ -47,51 +47,50 @@ function writePassword() {
   console.log (numericChar);
   console.log(specialChar);
   
-  /*if((lowerCase) && (upperCase = false) && (numericChar = false) && (specialChar = false)) {
+  if((lowerCase === true) && (upperCase === false) && (numericChar === false) && (specialChar === false)) {
     lowecaseLength = lengthCheck;
-  } else if ((lowerCase) && (upperCase) && (numericChar = false) && (specialChar = false)) {
+  } else if ((lowerCase === true) && (upperCase === true) && (numericChar === false) && (specialChar === false)) {
     uppercaseLength = 2;
     lowecaseLength = lengthCheck - uppercaseLength;
-  } else if ((lowerCase) && (upperCase = false) && (numericChar) && (specialChar = false)) {
+  } else if ((lowerCase === true) && (upperCase === true) && (numericChar === true) && (specialChar === false)) {
     numericLength = 2;
-    lowecaseLength = lengthCheck - numericLength;
-  } else if ((lowerCase) && (upperCase = false) && (numericChar = false) && (specialChar)) {
-    specialLength = 2;
-    lowecaseLength = lengthCheck - specialLength;
-  } else if ((lowerCase) && (upperCase) && (numericChar) && (specialChar = false)) {
     uppercaseLength = 2;
-    numericLength = 2;
-    lowecaseLength = lengthCheck - (uppercaseLength + numericLength);
-  } else if ((lowerCase) && (upperCase) && (numericChar = false) && (specialChar)) {
+    lowecaseLength = lengthCheck - 4;
+  } else if ((lowerCase === true) && (upperCase === true) && (numericChar === false) && (specialChar === true)) {
     uppercaseLength = 2;
     specialLength = 2;
-    lowecaseLength = lengthCheck - (uppercaseLength + specialLength);
-  } else if ((lowerCase) && ( upperCase = false) && (numericChar) && (specialChar)) {
+    lowecaseLength = lengthCheck - 4;
+  } else if ((lowerCase === true) && (upperCase === false) && (numericChar === true) && (specialChar === true)) {
     numericLength = 2;
     specialLength = 2;
-    lowecaseLength = lengthCheck - (numericLength + specialLength);
-  } else if ((lowerCase = false) && (upperCase) && (numericChar = false) && (specialChar = false)) {
+    lowecaseLength = lengthCheck - 4;
+  } else if ((lowerCase === true) && (upperCase === false) && (numericChar === true) && (specialChar === false)) {
+    numericLength = 2;
+    lowecaseLength = lengthCheck - 2;
+  } else if ((lowerCase === true) && (upperCase === false) && (numericChar === false) && (specialChar === true)) {
+    specialLength = 2;
+    lowecaseLength = lengthCheck -2;
+  } else if ((lowerCase === false) && (upperCase === true) && (numericChar === false) && (specialChar === false)) {
     uppercaseLength = lengthCheck;
-  } else if ((lowerCase = false) && (upperCase) && (numericChar) && (specialChar = false)) {
+  } else if ((lowerCase === false) && (upperCase === true) && (numericChar === true) && (specialChar === false)) {
     numericLength = 2;
-    uppercaseLength = lengthCheck - numericLength;
-  } else if ((lowerCase = false) && (upperCase) && (numericChar = false) && (specialChar)) {
+    uppercaseLength = lengthCheck - 2;
+  } else if ((lowerCase === false) && (upperCase === true) && (numericChar === false) && (specialChar === true)) {
     specialLength = 2;
-    uppercaseLength = lengthCheck - specialLength;
-  } else if ((lowerCase = false) && (upperCase = false) && (numericChar) && (specialChar = false)) {
+    uppercaseLength = lengthCheck - 2;
+  } else if ((lowerCase === false) && (upperCase === true) && (numericChar === true) && (specialChar === true)) {
+    specialLength = 2;
+    numericLength = 2;
+    uppercaseLength = lengthCheck - 4;
+  } else if ((lowerCase === false) && (upperCase === false) && (numericChar === true) && (specialChar === false)) {
     numericLength = lengthCheck;
-  } else if ((lowerCase = false) && (upperCase = false) && (numericChar) && (specialChar)) {
+  } else if ((lowerCase === false) && (upperCase === false) && (numericChar === true) && (specialChar === true)) {
     specialLength = 2;
-    numericLength = lengthCheck - specialLength;
-  } else {
+    numericLength = lengthCheck - 2;
+  } else if ((lowerCase === false) && (upperCase === false) && (numericChar === false) && (specialChar === true)) {
     specialLength = lengthCheck;
-  }*/
-  if((lowerCase =true) && (upperCase = true) && (numericChar = false) && (specialChar = false)) {
-    uppercaseLength = 2;
-    lowecaseLength = lengthCheck - uppercaseLength;
   } else {
-    lowecaseLength = 5;
-    numericLength = lengthCheck - lowecaseLength;
+    passwordCreate();
   }
   
   passwordlower = "chaythu";
@@ -99,13 +98,47 @@ function writePassword() {
   console.log(uppercaseLength);
   console.log(numericLength);
   console.log(specialLength);
-  
+  function passwordRandom (arr) {
+    let randomArray = Math.floor(Math.random() * arr.length);
+    return arr[randomArray];
+  }
+  var lower = [];
+  for (var i = 1; i <= lowecaseLength; i++) {
+    lower.push(passwordRandom(lowerCaseString))
+  }
+  var passwordlower = lower.join ('');
 
-  var password = passwordlower;
+  var upper = [];
+  for (var x = 1; x <=uppercaseLength; x++) {
+    upper.push(passwordRandom(uperCaseString));
+  }
+  var passwordupper = upper.join ('');
+
+  var num = [];
+  for ( var y = 1; y <= numericLength; y++) {
+    num.push(passwordRandom(number));
+  }
+  var passwordnum = num.join ('');
+
+  var spe = [];
+  for ( var z = 1; z <= specialLength; z++) {
+    spe.push(passwordRandom(specialString));
+  }
+  var passwordspecial = spe.join ('');
+
+  function generatePassword () {
+    var finalPassword = passwordspecial.concat(passwordupper, passwordlower, passwordnum);
+    return finalPassword;
+  }
+  var password = generatePassword();
   var passwordText = document.querySelector("#password");
   
   passwordText.placeholder = password;
-  console.log(passwordText);
+
+  lowecaseLength = 0;
+  uppercaseLength = 0;
+  numericLength = 0;
+  specialLength = 0;
   return;
 }
 
