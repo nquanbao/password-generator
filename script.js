@@ -28,16 +28,19 @@ var specialString = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
 // Write password to the #password input
 function writePassword() {
   var passwordCreate = function() {
-    window.alert("How many characters in password do you want to create ?");
-    lengthCheck = window.prompt("Length of Password :");
+    lengthCheck = window.prompt("How many characters in password do you want to create ?" + "\nPlease choose the length of your Password :");
     if(lengthCheck <8 || lengthCheck >128){
-      alert("Please generate again!");
+      alert("Please choose the length of Password again (min 8 and max 128)");
       passwordCreate();
     }
     lowerCase = window.confirm("Do you want to include Lowecase character in your password ?");
     upperCase = window.confirm(" Do you want to include uppercase character in your password ? ");
     numericChar = window.confirm(" Do you want to include number character in your password ?");
     specialChar = window.confirm("Do you want to include special character in your password ?");
+    if((lowerCase === false) && (upperCase === false) && (numericChar === false) && (specialChar === false)) {
+      alert("Password has to have at least one type of characters" + " Please click to generate password again!");
+      return generateBtn.addEventListener("click", writePassword);
+    }
     return;
   }
   passwordCreate();
@@ -90,10 +93,9 @@ function writePassword() {
   } else if ((lowerCase === false) && (upperCase === false) && (numericChar === false) && (specialChar === true)) {
     specialLength = lengthCheck;
   } else {
-    passwordCreate();
+    return;
   }
   
-  passwordlower = "chaythu";
   console.log(lowecaseLength);
   console.log(uppercaseLength);
   console.log(numericLength);
@@ -141,6 +143,7 @@ function writePassword() {
   specialLength = 0;
   return;
 }
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
