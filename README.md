@@ -41,7 +41,7 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
     ![alt text](assets/images/screenshot.png)
     ```
 ![alt sreenshot](./images/Screenshot%202023-05-04%20at%201.40.38%20PM.png)
-[deployed link](https://nquanbao.github.io/assignment-week-1/)
+[deployed link](https://nquanbao.github.io/password-generator/)
 ## Credits
 
 List your collaborators, if any, with links to their GitHub profiles.
